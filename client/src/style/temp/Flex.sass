@@ -1,0 +1,237 @@
+=media-breakpoint-up($size)
+  @if $size == xs
+    @content
+  @else if $size == sm
+    @media (min-width: 576px)
+      @content
+  @else if $size == md
+    @media (min-width: 768px)
+      @content
+  @else if $size == lg
+    @media (min-width: 992px)
+      @content
+  @else if $size == xl
+    @media (min-width: 1200px)
+      @content
+
+
+=media-breakpoint-down($size)
+  @if $size == xs
+    @media (max-width: 575px)
+      @content
+  @else if $size == sm
+    @media (max-width: 767px)
+      @content
+  @else if $size == md
+    @media (max-width: 991px)
+      @content
+  @else if $size == lg
+    @media (max-width: 1199px)
+      @content
+  @else if $size == xl
+    @content
+
+=display($size)
+  @if $size == xs
+    .d-none
+      display: none
+    .d-inline
+      display: inline
+    .d-inline-block
+      display: inline-block
+    .d-block
+      display: block
+    .d-table
+      display: table
+    .d-table-cell
+      display: table-cell
+    .d-table-row
+      display: table-row
+    .d-flex
+      display: flex
+    .d-flex-inline
+      display: inline-flex
+  @else
+    .d-#{$size}-none
+      display: none
+    .d-#{$size}-inline
+      display: inline
+    .d-#{$size}-inline-block
+      display: inline-block
+    .d-#{$size}-block
+      display: block
+    .d-#{$size}-table
+      display: table
+    .d-#{$size}-table-cell
+      display: table-cell
+    .d-#{$size}-table-row
+      display: table-row
+    .d-#{$size}-flex
+      display: flex
+    .d-#{$size}-flex-inline
+      display: inline-flex
+
+=flex($size)
+  @if $size == xs
+    .flex-row
+      flex-direction: row
+    .flex-row-reverse
+      flex-direction: row-reverse
+    .flex-column
+      flex-direction: column
+    .flex-column-reverse
+      flex-direction: column-reverse
+  @else
+    .flex-#{$size}-row
+      flex-direction: row
+    .flex-#{$size}-row-reverse
+      flex-direction: row-reverse
+    .flex-#{$size}-column
+      flex-direction: column
+    .flex-#{$size}-column-reverse
+      flex-direction: column-reverse
+
+=justify-content($size)
+  @if $size == xs
+    .justify-content-start
+      justify-content: flex-start
+    .justify-content-end
+      justify-content: flex-end
+    .justify-content-center
+      justify-content: center
+    .justify-content-between
+      justify-content: space-between
+    .justify-content-around
+      justify-content: space-around
+  @else
+    .justify-content-#{$size}-start
+      justify-content: flex-start
+    .justify-content-#{$size}-end
+      justify-content: flex-end
+    .justify-content-#{$size}-center
+      justify-content: center
+    .justify-content-#{$size}-between
+      justify-content: space-between
+    .justify-content-#{$size}-around
+      justify-content: space-around
+
+=align-items($size)
+  @if $size == xs
+    .align-items-start
+      align-items: flex-start
+    .align-items-end
+      align-items: flex-end
+    .align-items-center
+      align-items: center
+    .align-items-baseline
+      align-items: baseline
+    .align-items-stretch
+      align-items: stretch
+  @else
+    .align-items-#{$size}-start
+      align-items: flex-start
+    .align-items-#{$size}-end
+      align-items: flex-end
+    .align-items-#{$size}-center
+      align-items: center
+    .align-items-#{$size}-baseline
+      align-items: baseline
+    .align-items-#{$size}-stretch
+      align-items: stretch
+
+=align-self($size)
+  @if $size == xs
+    .align-self-start
+      align-self: flex-start
+    .align-self-end
+      align-self: flex-end
+    .align-self-center
+      align-self: center
+    .align-self-baseline
+      align-self: baseline
+    .align-self-stretch
+      align-self: stretch
+  @else
+    .align-self-#{$size}-start
+      align-self: flex-start
+    .align-self-#{$size}-end
+      align-self: flex-end
+    .align-self-#{$size}-center
+      align-self: center
+    .align-self-#{$size}-baseline
+      align-self: baseline
+    .align-self-#{$size}-stretch
+      align-self: stretch
+
+=flex-wrap($size)
+  @if $size == xs
+    .flex-nowrap
+      flex-wrap: nowrap
+    .flex-wrap
+      flex-wrap: wrap
+    .flex-wrap-reverse
+      flex-wrap: wrap-reverse
+  @else
+    .flex-#{$size}-nowrap
+      flex-wrap: nowrap
+    .flex-#{$size}-wrap
+      flex-wrap: wrap
+    .flex-#{$size}-wrap-reverse
+      flex-wrap: wrap-reverse
+
+=align-content($size)
+  @if $size == xs
+    .align-content-start
+      align-content: flex-start
+    .align-content-end
+      align-content: flex-end
+    .align-content-center
+      align-content: center
+    .align-content-around
+      align-content: space-around
+    .align-content-stretch
+      align-content: stretch
+  @else
+    .align-content-#{$size}-start
+      align-content: flex-start
+    .align-content-#{$size}-end
+      align-content: flex-end
+    .align-content-#{$size}-center
+      align-content: center
+    .align-content-#{$size}-around
+      align-content: space-around
+    .align-content-#{$size}-stretch
+      align-content: stretch
+
+
+=order($size)
+  @if $size == xs
+    @for $i from 0 through 12
+      .order-#{$i}
+        order: $i
+  @else
+    @for $i from 0 through 12
+      .order-#{$size}-#{$i}
+        order: $i
+
+
+// =flex($size)
+//   @if $size == xs
+//   @else
+
+=media($size)
+  +media-breakpoint-up($size)
+    +display($size)
+    +flex($size)
+    +justify-content($size)
+    +align-items($size)
+    +align-self($size)
+    +flex-wrap($size)
+    +align-content($size)
+    +order($size)
+
++media(xs)
++media(sm)
++media(md)
++media(lg)
++media(xl)
